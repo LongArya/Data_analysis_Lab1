@@ -71,6 +71,7 @@ def save_diagrams(dataframe, root_dir):
 def association_rules_diagrams(dataframe, min_support_thrd, root_dir):
     found_rules_nums = []
     spent_time_stat = []
+    # frequent patterns are required for association rules generation
     frequent_itemsets = get_frequent_patterns_from_dataframe(dataframe, min_support_thrd)
     for conf_thrd in tqdm(ASSOC_RULES_THRESHOLDS):
         start_time = time.time()
@@ -146,3 +147,6 @@ if __name__ == "__main__":
     get_market_basket_analysis(demo=True, sorting_rule='support')
     print("ROAD TRAFFIC DATASET")
     get_road_traffic_accidents(demo=True, sorting_rule='lexic')
+    
+    get_market_basket_analysis(demo=False, sorting_rule='support')
+    get_road_traffic_accidents(demo=False, sorting_rule='lexic')
